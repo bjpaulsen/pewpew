@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:300,700&effect=3d">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/p5.min.js"></script>
+	<script src="Game/Core/sketch.js"></script>
+	<script src="Game/Core/shot.js"></script>
+	<script src="Game/Core/ship.js"></script>
+	<script src="Game/Core/powerup.js"></script>
+	<script src="Game/Core/animations.js"></script>
+	<script src="Game/Core/enemy.js"></script>
+
+	<style>
+		html,
+		body {
+			height: 100%;
+		}
+
+		body {
+			padding: 0;
+			margin: 0;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			background: #111111;
+		}
+
+		#content {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+
+		p {
+			position: absolute;
+			font-family: "Oswald";
+			font-weight: 700;
+			color: white;
+		}
+
+		#pew {
+			left: -810px;
+			top: -210px;
+			font-size: 100px;
+		}
+
+		#subpew1 {
+			left: -792px;
+			top: -0px;
+			font-size: 40px;
+		}
+
+		#subpew2 {
+			left: -760px;
+			top: 70px;
+			font-size: 40px;
+			opacity: 1;
+		}
+
+		#score {
+			left: -275px;
+			top: -440px;
+			font-size: 50px;
+		}
+
+		#highscore {
+			left: -273px;
+			top: -342px;
+			font-size: 28px;
+			color: red;
+		}
+
+		#newhs {
+			left: -160px;
+			top: -240px;
+			font-size: 50px;
+			color: red;
+		}
+
+		#gameover {
+			left: -190px;
+			top: -202px;
+			font-size: 80px;
+		}
+
+		#restart {
+			left: -135px;
+			top: -60px;
+			font-size: 50px;
+			color: lightgreen;
+		}
+
+		#intro {
+			left: -70px;
+			top: -80px;
+			font-size: 36px;
+		}
+
+		#button {
+			position: fixed;
+			text-align: center;
+			line-height: 170px;
+			font-family: 'Oswald', sans-serif;
+			font-size: 28px;
+			border-radius: 50%;
+			background: #111111;
+			left: 545px;
+			width: 170px;
+			height: 170px;
+			transition: transform .18s, background .2s, color .1s;
+			color: #ffffff;
+			top: -75px;
+			border: 1px solid #ffffff;
+		}
+
+		#button:hover {
+			transform: scale(1.25);
+			background: #ffffff;
+			color: #111111;
+		}
+
+		#tips {
+			display: none;
+			width: 800px;
+			left: 235px;
+			top: -415px;
+			font-size: 20px;
+			font-weight: 300;
+			text-align: center;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div id="content">
+
+		<p class="font-effect-3d" id="pew">Pew Pew</p>
+		<p class="font-effect-3d" id="subpew1">A GAME FOR APCSP</p>
+		<p class="font-effect-3d" id="subpew2">by ben paulsen</p>
+		<p class="font-effect-3d" id="score"></p>
+		<p id="highscore"></p>
+		<p id="newhs"></p>
+		<p class="font-effect-3d" id="gameover"></p>
+		<p id="restart"></p>
+		<p id="tutorial"></p>
+		<p class="font-effect-3d" id="intro"></p>
+
+		<p id="tips">
+			Move with all four arrow keys.<br><br>
+
+			Your lives are shown in the bottom left corner.<br>
+			You start with only three -- protect them.<br><br>
+
+			The circles are your enemies! Shoot them by holding down [SPACEBAR].<br>
+			Some enemies shoot back. Dodge their bullets to avoid losing lives!<br>
+			Colliding with enemies is also dangerous.<br>
+			Most importantly -- destroy enemies before they get to the bottom!<br><br>
+
+			<br><br><br><br><br><br><br><br>
+
+			Your score is shown in the top left, with a personal best displayed in red underneath.<br>
+			You earn points when you destroy an enemy circle -- try to beat your highscore!<br><br>
+
+			Occasionally, blinking green and yellow boxes will slowly drop; these are powerups.<br>
+			They're helpful in a pinch -- collide your ship with them to attain a temporary buff.<br><br>
+
+			The rest, you'll figure out yourself. Good luck!
+		</p>
+
+		<div id="button" onmouseover="showTips()" onmouseout="hideTips()">INSTRUCTIONS</div>
+
+		<script>
+			function showTips() {
+				document.getElementById("tips").style.display = "block";
+			}
+			function hideTips() {
+				document.getElementById("tips").style.display = "none";
+			}
+		</script>
+
+	</div>
+</body>
+
+</html>
